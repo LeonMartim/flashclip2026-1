@@ -2,14 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* ============================================================
+   FlashClip Design System — Cyber-Tech / Futurismo Moderno
+   All colors in HSL. No hardcoded hex values in components.
+   ============================================================ */
 
 @layer base {
   :root {
-    /* FlashClip Tech Theme - Dark Navy with Purple/Violet Neon Accents */
-    --background: 230 45% 5%;
+    /* ── Base colors ─────────────────────────────────────── */
+    --background: 230 45% 4%;
     --foreground: 240 20% 95%;
 
     --card: 230 40% 7%;
@@ -18,14 +19,20 @@ All colors MUST be HSL.
     --popover: 230 40% 7%;
     --popover-foreground: 240 20% 95%;
 
+    /* Primary: Electric Violet */
     --primary: 260 85% 65%;
     --primary-foreground: 230 45% 5%;
 
+    /* Secondary: Deep Purple */
     --secondary: 280 70% 60%;
     --secondary-foreground: 230 45% 5%;
 
-    --muted: 230 30% 15%;
-    --muted-foreground: 240 10% 60%;
+    /* Cyan: Neon Aqua — second neon axis */
+    --cyan: 185 100% 60%;
+    --cyan-foreground: 230 45% 5%;
+
+    --muted: 230 30% 13%;
+    --muted-foreground: 240 10% 55%;
 
     --accent: 260 85% 65%;
     --accent-foreground: 230 45% 5%;
@@ -33,106 +40,266 @@ All colors MUST be HSL.
     --destructive: 0 84% 60%;
     --destructive-foreground: 240 20% 95%;
 
-    --border: 230 30% 18%;
-    --input: 230 30% 18%;
+    --border: 230 30% 16%;
+    --input: 230 30% 16%;
     --ring: 260 85% 65%;
 
     --radius: 0.75rem;
 
-    /* Neon glow effects - Purple/Violet */
-    --glow-primary: 0 0 20px hsl(260 85% 65% / 0.5);
-    --glow-secondary: 0 0 20px hsl(280 70% 60% / 0.5);
-    
-    /* Grid pattern */
-    --grid-color: hsl(230 30% 15% / 0.3);
+    /* ── Glow system ─────────────────────────────────────── */
+    --glow-primary:   0 0 20px hsl(260 85% 65% / 0.45), 0 0 40px hsl(260 85% 65% / 0.2);
+    --glow-primary-strong: 0 0 30px hsl(260 85% 65% / 0.8), 0 0 60px hsl(260 85% 65% / 0.4), 0 0 100px hsl(260 85% 65% / 0.15);
+    --glow-cyan:      0 0 20px hsl(185 100% 60% / 0.5), 0 0 40px hsl(185 100% 60% / 0.2);
+    --glow-cyan-strong: 0 0 30px hsl(185 100% 60% / 0.8), 0 0 60px hsl(185 100% 60% / 0.4);
+
+    /* ── Language accent colors (used in cards & glows) ───── */
+    --color-cpp:     210 90% 55%;    /* blue */
+    --color-js:      48  96% 53%;    /* yellow */
+    --color-elixir:  280 55% 55%;    /* purple */
+    --color-php:     240 45% 60%;    /* indigo */
+    --color-prolog:  0   80% 55%;    /* red */
+
+    /* ── Glassmorphism tokens ────────────────────────────── */
+    --glass-bg:     hsl(230 40% 10% / 0.6);
+    --glass-border: hsl(240 30% 60% / 0.12);
+    --glass-blur:   16px;
+
+    /* ── Grid pattern ────────────────────────────────────── */
+    --grid-color: hsl(230 30% 20% / 0.25);
   }
 }
 
+/* ── Base resets & typography ─────────────────────────────── */
 @layer base {
   * {
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    background-image: 
+    background-image:
       linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
       linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
     background-size: 40px 40px;
+    background-attachment: fixed;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold;
   }
 
-  h1 {
-    @apply text-4xl md:text-6xl;
-  }
-
-  h2 {
-    @apply text-3xl md:text-5xl;
-  }
-
-  h3 {
-    @apply text-2xl md:text-4xl;
-  }
+  h1 { @apply text-4xl md:text-6xl; }
+  h2 { @apply text-3xl md:text-5xl; }
+  /* h3 intentionally NOT globally sized — each context sets it */
 }
 
+/* ── Utility layer ────────────────────────────────────────── */
 @layer utilities {
-  .glow-neon {
-    box-shadow: var(--glow-primary);
+
+  /* ─ Glow effects ─────────────────────────────────────── */
+  .glow-neon         { box-shadow: var(--glow-primary); }
+  .glow-neon-strong  { box-shadow: var(--glow-primary-strong); }
+  .glow-cyan         { box-shadow: var(--glow-cyan); }
+  .glow-cyan-strong  { box-shadow: var(--glow-cyan-strong); }
+
+  /* ─ Glassmorphism ────────────────────────────────────── */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
   }
 
-  .glow-neon-strong {
-    box-shadow: 0 0 30px hsl(260 85% 65% / 0.8), 0 0 60px hsl(260 85% 65% / 0.4);
-  }
-
-  .animate-pulse-slow {
-    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
-  .animate-fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Consistent card sizing */
-  .card-uniform {
-    @apply h-full flex flex-col;
-  }
-
-  .card-uniform-content {
-    @apply flex-1 flex flex-col;
-  }
-
+  /* ─ Text gradients ───────────────────────────────────── */
   .text-gradient {
-    background: linear-gradient(135deg, hsl(260 85% 65%), hsl(280 70% 60%));
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .border-gradient {
-    border-image: linear-gradient(135deg, hsl(260 85% 65%), hsl(280 70% 60%)) 1;
+  .text-gradient-cyan {
+    background: linear-gradient(135deg, hsl(var(--cyan)), hsl(var(--primary)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ─ Border gradient ──────────────────────────────────── */
+  .border-gradient-primary {
+    border-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary))) 1;
+  }
+
+  /* ─ Card system ──────────────────────────────────────── */
+  .card-uniform {
+    @apply h-full flex flex-col;
+  }
+  .card-uniform-content {
+    @apply flex-1 flex flex-col;
+  }
+
+  /* Cyber card: glass + animated border-glow on hover */
+  .card-cyber {
+    @apply relative flex flex-col overflow-hidden rounded-xl;
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .card-cyber:hover {
+    border-color: hsl(var(--primary) / 0.5);
+    box-shadow: var(--glow-primary);
+    transform: translateY(-3px) scale(1.01);
+  }
+
+  /* ─ Animations ───────────────────────────────────────── */
+  .animate-pulse-slow {
+    animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  /* Staggered fade-in via CSS custom property --delay */
+  .animate-fade-up {
+    animation: fade-up 0.6s ease-out both;
+    animation-delay: var(--delay, 0ms);
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.5s ease-out both;
+    animation-delay: var(--delay, 0ms);
+  }
+
+  /* Neon border sweep on CTAs */
+  .animate-border-sweep {
+    position: relative;
+    overflow: hidden;
+  }
+  .animate-border-sweep::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(90deg,
+      transparent 0%,
+      hsl(var(--primary) / 0.8) 40%,
+      hsl(var(--cyan) / 0.8) 60%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: border-sweep 2.5s linear infinite;
+    border-radius: inherit;
+    z-index: -1;
+  }
+
+  /* Spinning gradient ring (instructor avatars) */
+  .avatar-ring {
+    position: relative;
+    border-radius: 9999px;
+  }
+  .avatar-ring::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--cyan)), hsl(var(--secondary)));
+    z-index: -1;
+    animation: spin-slow 4s linear infinite;
+  }
+
+  /* Tech label style */
+  .label-mono {
+    @apply font-mono text-xs uppercase tracking-widest;
+    color: hsl(var(--cyan));
+  }
+
+  /* Cyberpunk corner brackets on elements */
+  .cyber-corners {
+    position: relative;
+  }
+  .cyber-corners::before,
+  .cyber-corners::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-color: hsl(var(--primary));
+    border-style: solid;
+    opacity: 0.7;
+    transition: opacity 0.3s ease, width 0.3s ease, height 0.3s ease;
+  }
+  .cyber-corners::before {
+    top: 0; left: 0;
+    border-width: 2px 0 0 2px;
+  }
+  .cyber-corners::after {
+    bottom: 0; right: 0;
+    border-width: 0 2px 2px 0;
+  }
+  .cyber-corners:hover::before,
+  .cyber-corners:hover::after {
+    opacity: 1;
+    width: 18px;
+    height: 18px;
   }
 }
 
-@layer base {
-  * {
-    @apply border-border;
+/* ── Keyframe definitions ─────────────────────────────────── */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
-  body {
-    @apply bg-background text-foreground;
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.05); }
+}
+
+@keyframes border-sweep {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes glow-breathe {
+  0%, 100% { box-shadow: var(--glow-primary); }
+  50%       { box-shadow: var(--glow-primary-strong); }
+}
+
+@keyframes timeline-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4); }
+  50%       { box-shadow: 0 0 0 8px hsl(var(--primary) / 0); }
+}
+
+/* ── Accessibility: respect reduced motion ────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

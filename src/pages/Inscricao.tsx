@@ -1,38 +1,47 @@
-import { Card } from "@/components/ui/card";
 import { CheckCircle2 } from "lucide-react";
 
-const Inscricao = () => {
-  return (
-    <div className="min-h-screen pt-24 pb-12 px-4">
-      <div className="container mx-auto max-w-4xl">
-        <div className="text-center mb-12">
-          <h1 className="text-gradient mb-4">Inscrições</h1>
+const Inscricao = () => (
+  <div className="min-h-screen pt-28 pb-16 px-4 relative z-10 flex items-center justify-center">
+    <div className="container mx-auto max-w-2xl">
+      <div
+        className="card-cyber p-12 md:p-20 text-center animate-fade-up"
+      >
+        {/* Icon */}
+        <div className="relative w-28 h-28 mx-auto mb-8">
+          <div className="absolute inset-0 bg-secondary/20 blur-2xl rounded-full" />
+          <div
+            className="absolute inset-0 rounded-full"
+            style={{
+              background:
+                "conic-gradient(from 0deg, hsl(var(--primary)), hsl(var(--cyan)), hsl(var(--secondary)), hsl(var(--primary)))",
+              padding: "2px",
+              borderRadius: "9999px",
+              animation: "spin-slow 5s linear infinite",
+            }}
+          />
+          <div className="absolute inset-[2px] rounded-full bg-card flex items-center justify-center">
+            <CheckCircle2
+              className="text-secondary relative z-10"
+              size={52}
+              strokeWidth={1.5}
+            />
+          </div>
         </div>
 
-        <Card className="p-8 md:p-16 bg-card/50 backdrop-blur-sm border-primary/20">
-          <div className="flex flex-col items-center justify-center text-center space-y-6">
-            <div className="relative">
-              <div className="absolute inset-0 bg-secondary/20 blur-2xl rounded-full"></div>
-              <CheckCircle2 className="w-24 h-24 text-secondary relative z-10" strokeWidth={2} />
-            </div>
-            
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-              Inscrições Encerradas!
-            </h2>
-            
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl leading-relaxed">
-              As inscrições para o evento foram encerradas. Agradecemos o seu interesse e 
-              esperamos te ver na próxima edição!
-            </p>
-
-            <div className="pt-4 text-sm text-muted-foreground/80">
-              Fique atento às nossas redes sociais para novidades sobre futuros eventos.
-            </div>
-          </div>
-        </Card>
+        <p className="label-mono mb-4 opacity-60">// status: encerrado</p>
+        <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
+          Inscrições Encerradas!
+        </h1>
+        <p className="text-lg text-muted-foreground max-w-lg mx-auto leading-relaxed">
+          As inscrições para o evento foram encerradas. Agradecemos o seu interesse
+          e esperamos te ver na próxima edição!
+        </p>
+        <div className="mt-8 pt-6 border-t border-white/5 text-sm text-muted-foreground/60 font-mono">
+          // fique atento às nossas redes sociais para novidades
+        </div>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 export default Inscricao;

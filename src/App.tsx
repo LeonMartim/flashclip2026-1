@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { StarryBackground } from "./components/StarryBackground";
 import Home from "./pages/Home";
 import Cursos from "./pages/Cursos";
 import Programacao from "./pages/Programacao";
@@ -24,19 +25,21 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        {/* Global starry background — rendered once for all pages */}
+        <StarryBackground />
         <Navbar />
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route index element={<Home />} />
-          <Route path="/cursos" element={<Cursos />} />
-          <Route path="/programacao" element={<Programacao />} />
-          <Route path="/instrutores" element={<Instrutores />} />
+          <Route path="/"              element={<Home />} />
+          <Route index                 element={<Home />} />
+          <Route path="/cursos"        element={<Cursos />} />
+          <Route path="/programacao"   element={<Programacao />} />
+          <Route path="/instrutores"   element={<Instrutores />} />
           <Route path="/patrocinadores" element={<Patrocinadores />} />
-          <Route path="/contato" element={<Contato />} />
-          <Route path="/inscricao" element={<Inscricao />} />
-          <Route path="/sobre" element={<Sobre />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/contato"       element={<Contato />} />
+          <Route path="/inscricao"     element={<Inscricao />} />
+          <Route path="/sobre"         element={<Sobre />} />
+          <Route path="/faq"           element={<FAQ />} />
+          <Route path="*"              element={<NotFound />} />
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -1,73 +1,109 @@
 import { useEffect, useState } from "react";
 
 interface TimeLeft {
-  days: number;
-  hours: number;
+  days:    number;
+  hours:   number;
   minutes: number;
   seconds: number;
 }
 
-const Countdown = () => {
-  const targetDate = new Date("2025-11-29T14:00:00-03:00").getTime();
+const TARGET_DATE = new Date("2025-11-29T14:00:00-03:00").getTime();
 
-  const calculateTimeLeft = (): TimeLeft | null => {
-    const difference = targetDate - new Date().getTime();
-
-    if (difference <= 0) {
-      return null;
-    }
-
-    return {
-      days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-      hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-      minutes: Math.floor((difference / 1000 / 60) % 60),
-      seconds: Math.floor((difference / 1000) % 60),
-    };
+const calculateTimeLeft = (): TimeLeft | null => {
+  const difference = TARGET_DATE - Date.now();
+  if (difference <= 0) return null;
+  return {
+    days:    Math.floor(difference / (1000 * 60 * 60 * 24)),
+    hours:   Math.floor((difference / (1000 * 60 * 60)) % 24),
+    minutes: Math.floor((difference / 1000 / 60) % 60),
+    seconds: Math.floor((difference / 1000) % 60),
   };
+};
 
-  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(calculateTimeLeft());
+const TimeUnit = ({
+  value,
+  label,
+  index,
+}: {
+  value: number;
+  label: string;
+  index: number;
+}) => (
+  <div
+    className="flex flex-col items-center gap-2 animate-fade-up"
+    style={{ "--delay": `${index * 100}ms` } as React.CSSProperties}
+  >
+    {/* Cyberpunk display block */}
+    <div className="relative cyber-corners group">
+      <div
+        className="
+          relative bg-card/70 backdrop-blur-sm
+          border border-primary/30 rounded-lg
+          px-5 py-4 min-w-[88px]
+          flex items-center justify-center
+          transition-all duration-300
+          group-hover:border-primary/70 group-hover:glow-neon
+        "
+      >
+        {/* Scanline overlay */}
+        <div
+          className="absolute inset-0 rounded-lg pointer-events-none opacity-10"
+          style={{
+            backgroundImage:
+              "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px)",
+          }}
+        />
+        <span className="font-mono text-4xl font-bold text-gradient relative z-10 tabular-nums">
+          {String(value).padStart(2, "0")}
+        </span>
+      </div>
+    </div>
+    {/* Label */}
+    <span className="label-mono">{label}</span>
+  </div>
+);
+
+const Separator = () => (
+  <div className="flex flex-col items-center justify-center pb-6 select-none">
+    <span className="font-mono text-3xl font-bold text-primary/60 animate-blink leading-none">
+      :
+    </span>
+  </div>
+);
+
+const Countdown = () => {
+  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(calculateTimeLeft);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(calculateTimeLeft());
-    }, 1000);
-
+    const timer = setInterval(() => setTimeLeft(calculateTimeLeft()), 1000);
     return () => clearInterval(timer);
   }, []);
 
   if (!timeLeft) {
     return (
-      <div className="text-center">
-        <p className="text-2xl font-bold text-gradient mb-4">
+      <div className="text-center animate-fade-up">
+        <span className="label-mono block mb-2">// status: live</span>
+        <p className="text-2xl font-bold text-gradient">
           Evento em andamento — FlashClip 29/11/2025
         </p>
       </div>
     );
   }
 
-  const timeUnits = [
-    { label: "Dias", value: timeLeft.days },
-    { label: "Horas", value: timeLeft.hours },
-    { label: "Minutos", value: timeLeft.minutes },
-    { label: "Segundos", value: timeLeft.seconds },
+  const units = [
+    { label: "DIAS",    value: timeLeft.days },
+    { label: "HORAS",   value: timeLeft.hours },
+    { label: "MIN",     value: timeLeft.minutes },
+    { label: "SEG",     value: timeLeft.seconds },
   ];
 
   return (
-    <div className="flex gap-4 justify-center flex-wrap">
-      {timeUnits.map((unit, index) => (
-        <div
-          key={unit.label}
-          className="flex flex-col items-center gap-2 min-w-[80px]"
-        >
-          <div className="bg-card border-2 border-primary rounded-lg p-4 w-full glow-neon">
-            <span className="text-4xl font-bold text-gradient">
-              {String(unit.value).padStart(2, "0")}
-            </span>
-          </div>
-          <span className="text-sm text-muted-foreground font-medium">
-            {unit.label}
-          </span>
-        </div>
+    <div className="flex items-end gap-2 justify-center flex-wrap">
+      {units.map((unit, i) => (
+        <>
+          <TimeUnit key={unit.label} value={unit.value} label={unit.label} index={i} />
+          {i < units.length - 1 && <Separator key={`sep-${i}`} />}
+        </>
       ))}
     </div>
   );
