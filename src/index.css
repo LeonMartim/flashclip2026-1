@@ -60,13 +60,9 @@
     --glow-cyan-strong: 0 0 30px hsl(185 100% 60% / 0.8), 0 0 60px hsl(185 100% 60% / 0.4);
 
     /* ── Language accent colors (used in cards & glows) ───── */
-    --color-cpp:     210 90% 55%;    /* blue */
-    --color-js:      48  96% 53%;    /* yellow */
     --color-go:      191 100% 43%;    /* cyan */
     --color-julia:   285 60% 50%;     /* purple */
-    --color-elixir: 200 90% 60%;    /* purple */
-    --color-php:     240 45% 60%;    /* indigo */
-    --color-prolog:  0   80% 55%;    /* red */
+
 
     /* ── Glassmorphism tokens ────────────────────────────── */
     --glass-bg:     hsl(230 40% 10% / 0.6);

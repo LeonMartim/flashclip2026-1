@@ -141,7 +141,11 @@ const Patrocinadores = () => {
                       </a>
                     )}
                     <a
-                      href={`https://instagram.com/${sponsor.instagram.replace("@", "")}`}
+                      href={
+                        sponsor.instagram.startsWith("http")
+                          ? sponsor.instagram
+                          : `https://instagram.com/${sponsor.instagram.replace("@", "")}`
+                      }
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg border border-white/10 text-xs font-mono text-muted-foreground hover:text-pink-400 hover:border-pink-400/40 hover:bg-pink-400/5 transition-all"

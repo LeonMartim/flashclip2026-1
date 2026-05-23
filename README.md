@@ -297,14 +297,14 @@ Entre em contato com a equipe FlashClip:
 
 - 📧 **Email:** contato.flashclip@gmail.com
 - 📱 **WhatsApp:** +55 (63) 98421-0122
-- 📷 **Instagram:** [@flashclip](https://instagram.com/flashclip)
+- 📷 **Instagram:** [@flashclip](https://www.instagram.com/flashclipp2026)
 - 🏢 **Local:** Ulbra Palmas, Tocantins
 
 ---
 
 ## 📄 Licença
 
-Este projeto é de propriedade da **Ulbra Palmas** e do evento **FlashClip** (2025).
+Este projeto é de propriedade da **Ulbra Palmas** e do evento **FlashClip** (2026).
 
 Todos os direitos reservados.
 
@@ -330,6 +330,6 @@ Simplesmente abra o projeto no [Lovable](https://lovable.dev/projects/53fd63de-2
 
 Desenvolvido com 💜 pela equipe FlashClip
 
-[🌐 Site Oficial](https://flashclip.lovable.app) • [📷 Instagram](https://instagram.com/flashclip) • [📧 Contato](mailto:contato.flashclip@gmail.com)
+[🌐 Site Oficial](https://flashclip.lovable.app) • [📷 Instagram](https://www.instagram.com/flashclipp2026) • [📧 Contato](mailto:contato.flashclip@gmail.com)
 
 </div>

@@ -70,10 +70,11 @@ const Home = () => (
 
         {/* Tagline */}
         <p
-          className="text-xl md:text-2xl text-muted-foreground mb-12 animate-fade-up"
+          className="text-xl md:text-2xl mb-12 animate-fade-up"
           style={{ "--delay": "200ms" } as React.CSSProperties}
         >
-          Conecte-se ao futuro da programação
+          Conecte-se ao futuro da programação{' '}
+          <span className="text-cyan font-semibold">com a Copa da Tecnologia</span>
         </p>
 
         {/* Countdown */}

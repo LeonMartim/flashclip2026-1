@@ -6,25 +6,25 @@ const socialLinks = [
   {
     name: "FlashClip no Instagram",
     icon: Instagram,
-    url: "https://instagram.com/flashclip",
+    url: "https://www.instagram.com/flashclipp2026",
     color: "hover:text-pink-400 hover:shadow-[0_0_16px_rgba(236,72,153,0.6)]",
   },
   {
     name: "Computação em Movimento no Instagram",
     icon: Instagram,
-    url: "https://instagram.com/computacaomovimento",
+    url: "https://www.instagram.com/computacaoemmovimento",
     color: "hover:text-pink-400 hover:shadow-[0_0_16px_rgba(236,72,153,0.6)]",
   },
   {
     name: "Ulbra no Instagram",
     icon: Instagram,
-    url: "https://instagram.com/ulbra",
+    url: "https://www.instagram.com/ulbrapalmas",
     color: "hover:text-pink-400 hover:shadow-[0_0_16px_rgba(236,72,153,0.6)]",
   },
   {
     name: "Ulbra no YouTube",
     icon: Youtube,
-    url: "https://youtube.com/ulbra",
+    url: "https://youtube.com/@computacaoemmovimento?si=vsJdIeB0IYPGr-vo",
     color: "hover:text-red-400 hover:shadow-[0_0_16px_rgba(248,113,113,0.6)]",
   },
 ];
@@ -55,7 +55,7 @@ const Footer = () => (
           {/* Copyright */}
           <div className="text-center">
             <p className="text-sm text-muted-foreground">
-              © 2025 FlashClip. Todos os direitos reservados.
+              © 2026 FlashClip. Todos os direitos reservados.
             </p>
             <div className="flex gap-4 mt-2 justify-center text-xs text-muted-foreground/70">
               <a href="#" className="hover:text-primary transition-colors">

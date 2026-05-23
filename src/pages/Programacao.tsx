@@ -52,7 +52,7 @@ const typeConfig = {
     label: "CURSO",
     dotColor: "hsl(var(--primary))",
     dotGlow: "var(--glow-primary)",
-    accentBg: "bg-primary/10 border-primary/30",
+    accentBg: "bg-primary/15 border-primary/40",
     accentText: "text-primary",
   },
   break: {
@@ -60,15 +60,15 @@ const typeConfig = {
     label: "INTERVALO",
     dotColor: "hsl(var(--muted-foreground))",
     dotGlow: "none",
-    accentBg: "bg-muted/40 border-white/10",
-    accentText: "text-muted-foreground",
+    accentBg: "bg-slate-900/80 border-white/20",
+    accentText: "text-foreground",
   },
   coffee: {
     icon: Coffee,
     label: "COFFEE-BREAK",
     dotColor: "hsl(var(--cyan))",
     dotGlow: "var(--glow-cyan)",
-    accentBg: "bg-cyan/10 border-cyan/30",
+    accentBg: "bg-cyan/15 border-cyan/50",
     accentText: "text-cyan",
   },
 };
@@ -118,10 +118,10 @@ const Programacao = () => (
                 />
 
                 {/* Card */}
-                <div className="md:ml-20 card-cyber p-0 overflow-hidden">
+                <div className="md:ml-20 card-cyber p-0 overflow-hidden bg-slate-950/80 border-white/10">
                   {/* Top accent strip */}
                   <div
-                    className={`flex items-center gap-3 px-5 py-2.5 border-b border-white/5 ${cfg.accentBg}`}
+                    className={`flex items-center gap-3 px-5 py-2.5 border-b border-white/10 ${cfg.accentBg}`}
                   >
                     <Icon size={14} className={cfg.accentText} />
                     <span className={`font-mono text-xs font-bold tracking-widest uppercase ${cfg.accentText}`}>
@@ -142,7 +142,7 @@ const Programacao = () => (
                     {/* Content */}
                     <div className="flex-1">
                       <h3 className="text-lg font-bold mb-1.5">{item.title}</h3>
-                      <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                      <p className="text-sm text-foreground mb-4 leading-relaxed">
                         {item.description}
                       </p>
 

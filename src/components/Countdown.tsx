@@ -7,7 +7,7 @@ interface TimeLeft {
   seconds: number;
 }
 
-const TARGET_DATE = new Date("2025-11-29T14:00:00-03:00").getTime();
+const TARGET_DATE = new Date("2026-06-13T14:00:00-03:00").getTime();
 
 const calculateTimeLeft = (): TimeLeft | null => {
   const difference = TARGET_DATE - Date.now();
@@ -84,7 +84,7 @@ const Countdown = () => {
       <div className="text-center animate-fade-up">
         <span className="label-mono block mb-2">// status: live</span>
         <p className="text-2xl font-bold text-gradient">
-          Evento em andamento — FlashClip 29/11/2025
+          Evento em andamento — FlashClip 13/06/2026
         </p>
       </div>
     );
