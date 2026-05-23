@@ -22,7 +22,7 @@ const Instrutores = () => (
               {/* Section header */}
               <div className="flex items-center gap-4 mb-8">
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center p-2"
+                  className="w-[72px] h-[72px] rounded-xl flex items-center justify-center p-2"
                   style={{
                     background: `${course.accentHex}18`,
                     border: `1px solid ${course.accentHex}35`,

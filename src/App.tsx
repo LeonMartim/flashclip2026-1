@@ -5,7 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import { StarryBackground } from "./components/StarryBackground";
+import ArenaBackground from "./components/ArenaBackground";
 import Home from "./pages/Home";
 import Cursos from "./pages/Cursos";
 import Programacao from "./pages/Programacao";
@@ -26,7 +26,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         {/* Global starry background — rendered once for all pages */}
-        <StarryBackground />
+        <ArenaBackground />
         <Navbar />
         <Routes>
           <Route path="/"              element={<Home />} />

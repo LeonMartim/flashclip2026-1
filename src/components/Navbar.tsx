@@ -45,7 +45,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="group flex items-center transition-all duration-300 hover:drop-shadow-[0_0_12px_hsl(260_85%_65%_/_0.7)]"
+            className="group flex items-center transition-all duration-300 hover:drop-shadow-[0_0_12px_hsl(215_100%_50%_/_0.7)]"
           >
             <LogoFlashClip variant="full" size="md" />
           </Link>

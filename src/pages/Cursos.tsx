@@ -92,7 +92,7 @@ const CourseCard = ({
         <div className="flex items-start justify-between mb-5">
           {/* Language icon with glow */}
           <div
-            className="w-14 h-14 rounded-xl flex items-center justify-center p-2.5"
+            className="w-[84px] h-[84px] rounded-xl flex items-center justify-center p-2.5"
             style={{
               background: `${course.accentHex}15`,
               border: `1px solid ${course.accentHex}30`,

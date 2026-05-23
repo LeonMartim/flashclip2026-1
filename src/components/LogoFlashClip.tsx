@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import logoImage from "@/assets/flashclip-logo2.png";
+import logoImage from "@/assets/LogoFlaschClipMelhorada.png";
 
 interface LogoFlashClipProps {
   variant?: "full" | "icon";
@@ -30,7 +30,7 @@ export const LogoFlashClip = ({
           sizeMap[size],
           "object-contain transition-all duration-300",
           rounded && "rounded-full",
-          "hover:brightness-110 hover:-translate-y-0.5 hover:drop-shadow-[0_0_20px_rgba(109,74,255,0.6)]"
+          "hover:brightness-125 hover:-translate-y-1 hover:drop-shadow-[0_0_25px_rgba(80,180,255,0.9)]"
         )}
       />
       {variant === "full" && size !== "sm" && (

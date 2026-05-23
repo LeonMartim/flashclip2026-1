@@ -127,7 +127,7 @@ const Home = () => (
           <span className="w-px h-4 bg-border" />
           <span className="flex items-center gap-1.5">
             <Clock size={14} className="text-cyan" />
-            29/11/2025 às 14h
+            13/06/2026 às 14h
           </span>
         </div>
       </div>
@@ -224,7 +224,7 @@ const Home = () => (
                 </span>
               )}
 
-              <div className="w-16 h-16 flex items-center justify-center mb-5 mx-auto">
+              <div className="w-24 h-24 flex items-center justify-center mb-5 mx-auto">
                 <img
                   src={course.image}
                   alt={`${course.title} logo`}

@@ -19,6 +19,8 @@ export interface Course {
 
 import cppIcon     from "@/assets/languages/cpp.png";
 import jsIcon      from "@/assets/languages/javascript.png";
+import goIcon      from "@/assets/languages/go.webp";
+import juliaIcon   from "@/assets/languages/julia.webp";
 import elixirIcon  from "@/assets/languages/elixir.png";
 import phpIcon     from "@/assets/languages/php.png";
 import prologIcon  from "@/assets/languages/prolog.png";
@@ -68,6 +70,26 @@ export const courses: Course[] = [
   },
   {
     id: 3,
+    category: "Go",
+    title: "Desenvolvimento com Go",
+    description:
+      "Aprenda Go e desenvolva aplicações modernas e performáticas com uma linguagem eficiente.",
+    duration: "3 horas",
+    instructors: [
+      "Bruno",
+      "Crispim",
+      "Felipe",
+      "Jorge Leon",
+      "Matheus",
+    ],
+    prerequisite: "Nenhum",
+    image: goIcon,
+    soldOut: false,
+    accentColor: "hsl(var(--color-go))",
+    accentHex: "#00ADD8",
+  },
+  {
+    id: 4,
     category: "Elixir",
     title: "Programação Funcional com Elixir",
     description:
@@ -85,10 +107,10 @@ export const courses: Course[] = [
     image: elixirIcon,
     soldOut: false,
     accentColor: "hsl(var(--color-elixir))",
-    accentHex: "#9B59D0",
+    accentHex: "#00D1FF",
   },
   {
-    id: 4,
+    id: 5,
     category: "PHP",
     title: "Desenvolvimento Web com PHP",
     description:
@@ -108,7 +130,7 @@ export const courses: Course[] = [
     accentHex: "#8892BF",
   },
   {
-    id: 5,
+    id: 6,
     category: "Prolog",
     title: "Desvendando a Lógica com Prolog",
     description:
@@ -125,6 +147,26 @@ export const courses: Course[] = [
     image: prologIcon,
     soldOut: false,
     accentColor: "hsl(var(--color-prolog))",
-    accentHex: "#E63946",
+    accentHex: "#00A8FF",
+  },
+  {
+    id: 7,
+    category: "Julia",
+    title: "Desenvolvimento com Julia",
+    description:
+      "Explore Julia e desenvolva aplicações de alta performance para ciência de dados e computação numérica.",
+    duration: "3 horas",
+    instructors: [
+      "Carlos Eduardo",
+      "Claudio Junior",
+      "Euclides",
+      "Joao Vithor",
+      "Pedro Felipe",
+    ],
+    prerequisite: "Nenhum",
+    image: juliaIcon,
+    soldOut: false,
+    accentColor: "hsl(var(--color-julia))",
+    accentHex: "#9558B2",
   },
 ];
