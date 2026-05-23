@@ -36,10 +36,31 @@ export const instructorsByLanguage: Record<string, Instructor[]> = {
     { name: "Savio",              photo: "/instructors/kotlin/savio.webp" },
     { name: "Zidanny",            photo: "/instructors/kotlin/zidanny.webp" },
   ],
-  "Raskell": [
-    { name: "Lucasjardim",        photo: "/instructors/raskell/lucasjardim.webp" },
-    { name: "Matheusjose",        photo: "/instructors/raskell/matheusjose.jpg" },
-    { name: "Samuelramos",        photo: "/instructors/raskell/samuelramos.webp" },
-    { name: "Williamdias",        photo: "/instructors/raskell/williamdias.webp" },
+  "Haskell": [
+    { name: "Lucasjardim",        photo: "/instructors/haskell/lucasjardim.webp" },
+    { name: "Matheusjose",        photo: "/instructors/haskell/matheusjose.jpg" },
+    { name: "Samuelramos",        photo: "/instructors/haskell/samuelramos.webp" },
+    { name: "Williamdias",        photo: "/instructors/haskell/williamdias.webp" },
+  ],
+  "Dart": [
+    { name: "Joaomiguel",         photo: "/instructors/dart/joaomiguel.jpg" },
+    { name: "Luisgustavo",        photo: "/instructors/dart/luisgustavo.jpg" },
+    { name: "Marcuspires",        photo: "/instructors/dart/marcuspires.webp" },
+  ],
+  "Lua": [
+    { name: "Andre",              photo: "/instructors/lua/andre.webp" },
+    { name: "Joaby",              photo: "/instructors/lua/joaby.webp" },
+    { name: "Karyta",             photo: "/instructors/lua/karyta.webp" },
+    { name: "Pedro",              photo: "/instructors/lua/pedro.webp" },
+    { name: "Rafael",             photo: "/instructors/lua/rafael.webp" },
+  ],
+  "Rust": [
+    { name: "Joaopedroabrantes",  photo: "/instructors/rust/joaopedroabrantes.webp" },
+    { name: "Leonardobezerra",    photo: "/instructors/rust/leonardobezerra.webp" },
+    { name: "Wernerheerdt",       photo: "/instructors/rust/wernerheerdt.webp" },
+  ],
+  "TypeScript": [
+    { name: "Murillo",            photo: "/instructors/typescript/murillo.webp" },
+    { name: "Yasmin",             photo: "/instructors/typescript/yasmin.webp" },
   ],
 };

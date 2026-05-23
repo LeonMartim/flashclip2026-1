@@ -63,9 +63,13 @@
     --color-go:      191 100% 43%;    /* cyan */
     --color-c:       210 90% 55%;     /* blue (C) */
     --color-kotlin:  28 85% 55%;      /* orange (Kotlin) */
-    --color-raskell: 150 60% 40%;     /* green (Raskell) */
+    --color-haskell: 150 60% 40%;     /* green (Haskell) */
     --color-julia:   285 60% 50%;     /* purple */
-
+    --color-dart:    62 100% 48%;     /* red-orange (Dart) */
+    --color-lua:     220 60% 45%;     /* blue (Lua) */
+    --color-rust:    25 85% 50%;      /* orange-red (Rust) */
+    --color-swift:   350 80% 55%;     /* orange-pink (Swift) */
+    --color-typescript: 208 100% 47%; /* blue (TypeScript) */
 
     /* ── Glassmorphism tokens ────────────────────────────── */
     --glass-bg:     hsl(230 40% 10% / 0.6);
