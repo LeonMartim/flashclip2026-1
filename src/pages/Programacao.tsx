@@ -118,10 +118,11 @@ const Programacao = () => (
                 />
 
                 {/* Card */}
-                <div className="md:ml-20 card-cyber p-0 overflow-hidden bg-slate-950/80 border-white/10">
+                <div className="md:ml-20 card-cyber p-0 overflow-hidden bg-slate-950/95 border-white/15">
                   {/* Top accent strip */}
                   <div
                     className={`flex items-center gap-3 px-5 py-2.5 border-b border-white/10 ${cfg.accentBg}`}
+                    style={{ backdropFilter: "blur(8px)", WebkitBackdropFilter: "blur(8px)" }}
                   >
                     <Icon size={14} className={cfg.accentText} />
                     <span className={`font-mono text-xs font-bold tracking-widest uppercase ${cfg.accentText}`}>

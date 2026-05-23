@@ -21,4 +21,25 @@ export const instructorsByLanguage: Record<string, Instructor[]> = {
     { name: "Joao Vithor",        photo: "/instructors/julia/joaovithor.webp" },
     { name: "Pedro Felipe",       photo: "/instructors/julia/pedrofelipe.webp" },
   ],
+  "C": [
+    { name: "Carloseduardo",      photo: "/instructors/c/carloseduardo.webp" },
+    { name: "Caua",               photo: "/instructors/c/caua.webp" },
+    { name: "Gabrielareis",       photo: "/instructors/c/gabrielareis.webp" },
+    { name: "Joaopedromontelo",   photo: "/instructors/c/joaopedromontelo.webp" },
+    { name: "Yngrid",             photo: "/instructors/c/yngrid.webp" },
+  ],
+  "Kotlin": [
+    { name: "Arthurgabriel",      photo: "/instructors/kotlin/arthurgabriel.webp" },
+    { name: "Henrique",           photo: "/instructors/kotlin/henrique.webp" },
+    { name: "Leydson",            photo: "/instructors/kotlin/leydson.webp" },
+    { name: "Marcos",             photo: "/instructors/kotlin/marcos.webp" },
+    { name: "Savio",              photo: "/instructors/kotlin/savio.webp" },
+    { name: "Zidanny",            photo: "/instructors/kotlin/zidanny.webp" },
+  ],
+  "Raskell": [
+    { name: "Lucasjardim",        photo: "/instructors/raskell/lucasjardim.webp" },
+    { name: "Matheusjose",        photo: "/instructors/raskell/matheusjose.jpg" },
+    { name: "Samuelramos",        photo: "/instructors/raskell/samuelramos.webp" },
+    { name: "Williamdias",        photo: "/instructors/raskell/williamdias.webp" },
+  ],
 };
