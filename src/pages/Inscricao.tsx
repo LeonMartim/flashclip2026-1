@@ -1,47 +1,211 @@
-import { CheckCircle2 } from "lucide-react";
+import * as React from "react";
+import { useState } from "react";
+import { useForm, Controller } from "react-hook-form";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
+import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/lib/supabase";
 
-const Inscricao = () => (
-  <div className="min-h-screen pt-28 pb-16 px-4 relative z-10 flex items-center justify-center">
-    <div className="container mx-auto max-w-2xl">
-      <div
-        className="card-cyber p-12 md:p-20 text-center animate-fade-up"
-      >
-        {/* Icon */}
-        <div className="relative w-28 h-28 mx-auto mb-8">
-          <div className="absolute inset-0 bg-secondary/20 blur-2xl rounded-full" />
-          <div
-            className="absolute inset-0 rounded-full"
-            style={{
-              background:
-                "conic-gradient(from 0deg, hsl(var(--primary)), hsl(var(--cyan)), hsl(var(--secondary)), hsl(var(--primary)))",
-              padding: "2px",
-              borderRadius: "9999px",
-              animation: "spin-slow 5s linear infinite",
-            }}
-          />
-          <div className="absolute inset-[2px] rounded-full bg-card flex items-center justify-center">
-            <CheckCircle2
-              className="text-secondary relative z-10"
-              size={52}
-              strokeWidth={1.5}
-            />
-          </div>
-        </div>
+type FormData = {
+  nome: string;
+  email: string;
+  telefone: string;
+  instituicao: string;
+  curso_escolhido: string;
+  confirm: boolean;
+};
 
-        <p className="label-mono mb-4 opacity-60">// status: encerrado</p>
-        <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-          Inscrições Encerradas!
-        </h1>
-        <p className="text-lg text-muted-foreground max-w-lg mx-auto leading-relaxed">
-          As inscrições para o evento foram encerradas. Agradecemos o seu interesse
-          e esperamos te ver na próxima edição!
-        </p>
-        <div className="mt-8 pt-6 border-t border-white/5 text-sm text-muted-foreground/60 font-mono">
-          // fique atento às nossas redes sociais para novidades
+const COURSES = [
+  "Go",
+  "Julia",
+  "C",
+  "Kotlin",
+  "Haskell",
+  "Dart",
+  "Lua",
+  "Rust",
+  "Swift",
+  "TypeScript",
+];
+
+const Inscricao: React.FC = () => {
+  const {
+    register,
+    handleSubmit,
+    control,
+    reset,
+    formState: { errors },
+  } = useForm<FormData>({ mode: "onTouched" });
+
+  const [loading, setLoading] = useState(false);
+  const [successMsg, setSuccessMsg] = useState<string | null>(null);
+
+  const onSubmit = async (data: FormData) => {
+    if (loading) return;
+    setLoading(true);
+    setSuccessMsg(null);
+
+    const payload = {
+      nome: data.nome.trim(),
+      email: data.email.trim().toLowerCase(),
+      telefone: data.telefone.trim(),
+      instituicao: data.instituicao.trim(),
+      curso_escolhido: data.curso_escolhido,
+    };
+
+    const { error } = await supabase.from("inscricoes").insert(payload);
+
+    setLoading(false);
+
+    if (error) {
+      const msg = String(error.message || error).
+        toLowerCase();
+      const isDuplicate = /unique|duplicate|already exists|23505/.test(msg);
+
+      if (isDuplicate) {
+        toast({
+          title: "E-mail já cadastrado",
+          description:
+            "Este e-mail já está inscrito no FlashClip 2026. Caso precise alterar sua inscrição, entre em contato com o organizador: leon_martins@rede.ulbra.br",
+        });
+        return;
+      }
+
+      toast({
+        title: "Erro ao registrar",
+        description: "Ocorreu um erro ao processar sua inscrição. Tente novamente mais tarde.",
+      });
+      console.error("Supabase insert error:", error);
+      return;
+    }
+
+    setSuccessMsg("Inscrição realizada com sucesso. Obrigado por participar do FlashClip 2026!");
+    toast({ title: "Inscrição confirmada", description: "Sua inscrição foi recebida com sucesso." });
+    reset();
+  };
+
+  return (
+    <div className="min-h-screen pt-28 pb-16 px-4 relative z-10 flex items-center justify-center">
+      <div className="container mx-auto max-w-3xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <section className="card-cyber p-8 md:p-10">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">FlashClip 2026 — Inscrições</h1>
+            <p className="text-muted-foreground mb-4">
+              Participe dos minicursos gratuitos na Copa da Tecnologia — sessões práticas e hands-on com
+              instrutores experientes. Vagas limitadas por curso.
+            </p>
+            <ul className="text-sm text-muted-foreground space-y-2">
+              <li>• Data do evento: <strong>13/06/2026</strong></li>
+              <li>• Duração dos minicursos: 3 horas</li>
+              <li>• Inscrição: gratuita</li>
+            </ul>
+          </section>
+
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="card-cyber p-8 md:p-10"
+            noValidate
+          >
+            <h2 className="text-xl font-semibold mb-4">Realizar inscrição</h2>
+
+            {successMsg ? (
+              <div className="rounded-md bg-emerald-900/30 border border-emerald-700 p-4 mb-4">
+                <p className="font-medium">{successMsg}</p>
+                <p className="text-sm text-muted-foreground">Em breve você receberá um e-mail de confirmação.</p>
+              </div>
+            ) : null}
+
+            <div className="space-y-4">
+              <div>
+                <label className="block text-sm mb-1">Nome completo</label>
+                <Input
+                  {...register("nome", { required: "Nome é obrigatório" })}
+                  placeholder="Seu nome completo"
+                />
+                {errors.nome && <p className="text-destructive text-sm mt-1">{errors.nome.message}</p>}
+              </div>
+
+              <div>
+                <label className="block text-sm mb-1">Email</label>
+                <Input
+                  {...register("email", {
+                    required: "E-mail é obrigatório",
+                    pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "E-mail inválido" },
+                  })}
+                  placeholder="seu@exemplo.com"
+                  type="email"
+                />
+                {errors.email && <p className="text-destructive text-sm mt-1">{errors.email.message}</p>}
+              </div>
+
+              <div>
+                <label className="block text-sm mb-1">Telefone / WhatsApp</label>
+                <Input {...register("telefone", { required: "Telefone é obrigatório" })} placeholder="(xx) xxxxx-xxxx" />
+                {errors.telefone && <p className="text-destructive text-sm mt-1">{errors.telefone.message}</p>}
+              </div>
+
+              <div>
+                <label className="block text-sm mb-1">Instituição</label>
+                <Input {...register("instituicao", { required: "Instituição é obrigatória" })} placeholder="Sua instituição" />
+                {errors.instituicao && <p className="text-destructive text-sm mt-1">{errors.instituicao.message}</p>}
+              </div>
+
+              <div>
+                <label className="block text-sm mb-1">Curso escolhido</label>
+                <Controller
+                  control={control}
+                  name="curso_escolhido"
+                  rules={{ required: "Selecione um curso" }}
+                  render={({ field }) => (
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Escolha um curso" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {COURSES.map((c) => (
+                          <SelectItem key={c} value={c}>
+                            {c}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
+                {errors.curso_escolhido && <p className="text-destructive text-sm mt-1">{errors.curso_escolhido.message}</p>}
+              </div>
+
+              <div className="flex items-start gap-2">
+                <Controller
+                  control={control}
+                  name="confirm"
+                  rules={{ required: true }}
+                  render={({ field }) => (
+                    <Checkbox checked={!!field.value} onCheckedChange={(v) => field.onChange(Boolean(v))} />
+                  )}
+                />
+                <label className="text-sm">Confirmo que os dados informados estão corretos.</label>
+              </div>
+              {errors.confirm && <p className="text-destructive text-sm mt-1">Você precisa confirmar os dados</p>}
+
+              <div className="pt-4">
+                <Button type="submit" disabled={loading} className="w-full">
+                  {loading ? "Enviando..." : "Realizar inscrição"}
+                </Button>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default Inscricao;
