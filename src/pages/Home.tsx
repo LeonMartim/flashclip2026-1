@@ -141,30 +141,28 @@ const Home = () => (
         <p className="label-mono text-center mb-8 opacity-60">// parceiros estratégicos</p>
         <h2 className="text-center mb-12 text-gradient">Nossos Parceiros</h2>
         <div className="flex flex-wrap justify-center gap-8 max-w-3xl mx-auto">
-          {sponsors
-            .filter((s) => s.tier === "diamante")
-            .map((sponsor, i) => (
-              <a
-                key={i}
-                href={sponsor.website || "#"}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="
-                  w-32 h-32 md:w-40 md:h-40 rounded-2xl
-                  glass hover:border-primary/50 hover:glow-neon
-                  flex items-center justify-center p-6
-                  transition-all duration-300 hover:scale-105
-                "
-              >
-                <img
-                  src={sponsor.logo}
-                  alt={`${sponsor.name} logo`}
-                  className="max-w-full max-h-full object-contain"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </a>
-            ))}
+          {sponsors.map((sponsor, i) => (
+            <a
+              key={i}
+              href={sponsor.website || "#"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="
+                w-32 h-32 md:w-40 md:h-40 rounded-2xl
+                glass hover:border-primary/50 hover:glow-neon
+                flex items-center justify-center p-6
+                transition-all duration-300 hover:scale-105
+              "
+            >
+              <img
+                src={sponsor.logo}
+                alt={`${sponsor.name} logo`}
+                className="max-w-full max-h-full object-contain"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          ))}
         </div>
       </div>
     </section>
