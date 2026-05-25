@@ -41,12 +41,22 @@ const Inscricao: React.FC = () => {
     register,
     handleSubmit,
     control,
+    setValue,
     reset,
     formState: { errors },
   } = useForm<FormData>({ mode: "onTouched" });
 
   const [loading, setLoading] = useState(false);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
+
+  const formatPhone = (value: string) => {
+    const digits = value.replace(/\D/g, "").slice(0, 11);
+    if (!digits) return "";
+    if (digits.length <= 2) return `(${digits}`;
+    if (digits.length <= 6) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+    if (digits.length <= 10) return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+    return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+  };
 
   const onSubmit = async (data: FormData) => {
     if (loading) return;
@@ -56,7 +66,7 @@ const Inscricao: React.FC = () => {
     const payload = {
       nome: data.nome.trim(),
       email: data.email.trim().toLowerCase(),
-      telefone: data.telefone.trim(),
+      telefone: data.telefone.replace(/\D/g, ""),
       instituicao: data.instituicao.trim(),
       curso_escolhido: data.curso_escolhido,
     };
@@ -66,8 +76,7 @@ const Inscricao: React.FC = () => {
     setLoading(false);
 
     if (error) {
-      const msg = String(error.message || error).
-        toLowerCase();
+      const msg = String(error.message || error).toLowerCase();
       const isDuplicate = /unique|duplicate|already exists|23505/.test(msg);
 
       if (isDuplicate) {
@@ -87,7 +96,9 @@ const Inscricao: React.FC = () => {
       return;
     }
 
-    setSuccessMsg("Inscrição realizada com sucesso. Obrigado por participar do FlashClip 2026!");
+    setSuccessMsg(
+      `Sua inscrição para o minicurso de ${data.curso_escolhido} foi registrada com sucesso.`,
+    );
     toast({ title: "Inscrição confirmada", description: "Sua inscrição foi recebida com sucesso." });
     reset();
   };
@@ -125,48 +136,132 @@ const Inscricao: React.FC = () => {
 
             <div className="space-y-4">
               <div>
-                <label className="block text-sm mb-1">Nome completo</label>
+                <label htmlFor="nome" className="block text-sm mb-1">
+                  Nome completo
+                </label>
                 <Input
-                  {...register("nome", { required: "Nome é obrigatório" })}
+                  id="nome"
+                  aria-invalid={errors.nome ? "true" : "false"}
+                  aria-describedby={errors.nome ? "nome-error" : undefined}
+                  className={errors.nome ? "border-destructive" : ""}
+                  {...register("nome", {
+                    required: "Nome é obrigatório",
+                    validate: (value) => value.trim().length > 0 || "Nome é obrigatório",
+                  })}
                   placeholder="Seu nome completo"
                 />
-                {errors.nome && <p className="text-destructive text-sm mt-1">{errors.nome.message}</p>}
+                {errors.nome && (
+                  <p id="nome-error" className="text-destructive text-sm mt-1">
+                    {errors.nome.message}
+                  </p>
+                )}
               </div>
 
               <div>
-                <label className="block text-sm mb-1">Email</label>
+                <label htmlFor="email" className="block text-sm mb-1">
+                  Email
+                </label>
                 <Input
+                  id="email"
+                  type="email"
+                  aria-invalid={errors.email ? "true" : "false"}
+                  aria-describedby={errors.email ? "email-error" : undefined}
+                  className={errors.email ? "border-destructive" : ""}
                   {...register("email", {
                     required: "E-mail é obrigatório",
-                    pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "E-mail inválido" },
+                    validate: (value) => value.trim().length > 0 || "E-mail é obrigatório",
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: "E-mail inválido",
+                    },
                   })}
                   placeholder="seu@exemplo.com"
-                  type="email"
                 />
-                {errors.email && <p className="text-destructive text-sm mt-1">{errors.email.message}</p>}
+                {errors.email && (
+                  <p id="email-error" className="text-destructive text-sm mt-1">
+                    {errors.email.message}
+                  </p>
+                )}
               </div>
 
               <div>
-                <label className="block text-sm mb-1">Telefone / WhatsApp</label>
-                <Input {...register("telefone", { required: "Telefone é obrigatório" })} placeholder="(xx) xxxxx-xxxx" />
-                {errors.telefone && <p className="text-destructive text-sm mt-1">{errors.telefone.message}</p>}
+                <label htmlFor="telefone" className="block text-sm mb-1">
+                  Telefone / WhatsApp
+                </label>
+                <Controller
+                  control={control}
+                  name="telefone"
+                  rules={{
+                    required: "Telefone é obrigatório",
+                    validate: (value) => {
+                      const digits = value.replace(/\D/g, "");
+                      if (!digits) return "Telefone é obrigatório";
+                      if (digits.length < 10) return "Telefone inválido";
+                      return true;
+                    },
+                  }}
+                  render={({ field }) => (
+                    <Input
+                      id="telefone"
+                      aria-invalid={errors.telefone ? "true" : "false"}
+                      aria-describedby={errors.telefone ? "telefone-error" : undefined}
+                      className={errors.telefone ? "border-destructive" : ""}
+                      inputMode="numeric"
+                      placeholder="(63) 99999-9999"
+                      value={field.value || ""}
+                      onChange={(event) => {
+                        const formatted = formatPhone(event.target.value);
+                        field.onChange(formatted);
+                        setValue("telefone", formatted, { shouldValidate: true });
+                      }}
+                    />
+                  )}
+                />
+                {errors.telefone && (
+                  <p id="telefone-error" className="text-destructive text-sm mt-1">
+                    {errors.telefone.message}
+                  </p>
+                )}
               </div>
 
               <div>
-                <label className="block text-sm mb-1">Instituição</label>
-                <Input {...register("instituicao", { required: "Instituição é obrigatória" })} placeholder="Sua instituição" />
-                {errors.instituicao && <p className="text-destructive text-sm mt-1">{errors.instituicao.message}</p>}
+                <label htmlFor="instituicao" className="block text-sm mb-1">
+                  Instituição
+                </label>
+                <Input
+                  id="instituicao"
+                  aria-invalid={errors.instituicao ? "true" : "false"}
+                  aria-describedby={errors.instituicao ? "instituicao-error" : undefined}
+                  className={errors.instituicao ? "border-destructive" : ""}
+                  {...register("instituicao", {
+                    required: "Instituição é obrigatória",
+                    validate: (value) => value.trim().length > 0 || "Instituição é obrigatória",
+                  })}
+                  placeholder="ULBRA, IFTO, Comunidade Externa"
+                />
+                {errors.instituicao && (
+                  <p id="instituicao-error" className="text-destructive text-sm mt-1">
+                    {errors.instituicao.message}
+                  </p>
+                )}
               </div>
 
               <div>
-                <label className="block text-sm mb-1">Curso escolhido</label>
+                <label htmlFor="curso_escolhido" className="block text-sm mb-1">
+                  Curso escolhido
+                </label>
                 <Controller
                   control={control}
                   name="curso_escolhido"
                   rules={{ required: "Selecione um curso" }}
                   render={({ field }) => (
                     <Select onValueChange={field.onChange} value={field.value}>
-                      <SelectTrigger>
+                      <SelectTrigger
+                        id="curso_escolhido"
+                        aria-invalid={errors.curso_escolhido ? "true" : "false"}
+                        aria-describedby={errors.curso_escolhido ? "curso-error" : undefined}
+                        className={errors.curso_escolhido ? "border-destructive" : ""}
+                      >
                         <SelectValue placeholder="Escolha um curso" />
                       </SelectTrigger>
                       <SelectContent>
@@ -179,27 +274,46 @@ const Inscricao: React.FC = () => {
                     </Select>
                   )}
                 />
-                {errors.curso_escolhido && <p className="text-destructive text-sm mt-1">{errors.curso_escolhido.message}</p>}
+                {errors.curso_escolhido && (
+                  <p id="curso-error" className="text-destructive text-sm mt-1">
+                    {errors.curso_escolhido.message}
+                  </p>
+                )}
               </div>
 
               <div className="flex items-start gap-2">
                 <Controller
                   control={control}
                   name="confirm"
-                  rules={{ required: true }}
+                  rules={{ required: "Você precisa confirmar os dados" }}
                   render={({ field }) => (
-                    <Checkbox checked={!!field.value} onCheckedChange={(v) => field.onChange(Boolean(v))} />
+                    <Checkbox
+                      id="confirm"
+                      checked={!!field.value}
+                      onCheckedChange={(v) => field.onChange(Boolean(v))}
+                      aria-invalid={errors.confirm ? "true" : "false"}
+                    />
                   )}
                 />
-                <label className="text-sm">Confirmo que os dados informados estão corretos.</label>
+                <label htmlFor="confirm" className="text-sm">
+                  Confirmo que os dados informados estão corretos.
+                </label>
               </div>
-              {errors.confirm && <p className="text-destructive text-sm mt-1">Você precisa confirmar os dados</p>}
+              {errors.confirm && (
+                <p id="confirm-error" className="text-destructive text-sm mt-1">
+                  {errors.confirm.message}
+                </p>
+              )}
 
               <div className="pt-4">
                 <Button type="submit" disabled={loading} className="w-full">
                   {loading ? "Enviando..." : "Realizar inscrição"}
                 </Button>
               </div>
+
+              <p className="text-xs text-muted-foreground/80 mt-2">
+                Os dados informados serão utilizados exclusivamente para organização do FlashClip 2026.
+              </p>
             </div>
           </form>
         </div>
