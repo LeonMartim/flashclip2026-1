@@ -1,6 +1,6 @@
 # FlashClip 2026
 
-![FlashClip Logo](./public/LogoFlaschClipMelhorada.png)
+![FlashClip Logo](./assets/LogoFlaschClipMelhorada.png)
 
 Projeto oficial do FlashClip 2026: um site universitário de programação com tema esportivo e futurista, focado em minicursos, instrutores, programação do evento e inscrições online.
 
@@ -175,7 +175,7 @@ Publicação recomendada com Vercel:
 
 ## 👥 Equipe
 
-Não há metadata de autor ou colaboradores definida em `package.json`.
+Jorge Leon Rodrigues Martins
 
 ---
 

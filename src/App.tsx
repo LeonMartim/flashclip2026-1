@@ -11,6 +11,7 @@ import Cursos from "./pages/Cursos";
 import Programacao from "./pages/Programacao";
 import Instrutores from "./pages/Instrutores";
 import Patrocinadores from "./pages/Patrocinadores";
+import ComoPatrocinar from "./pages/ComoPatrocinar";
 import Contato from "./pages/Contato";
 import Inscricao from "./pages/Inscricao";
 import Sobre from "./pages/Sobre";
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/programacao"   element={<Programacao />} />
           <Route path="/instrutores"   element={<Instrutores />} />
           <Route path="/patrocinadores" element={<Patrocinadores />} />
+          <Route path="/como-patrocinar" element={<ComoPatrocinar />} />
           <Route path="/contato"       element={<Contato />} />
           <Route path="/inscricao"     element={<Inscricao />} />
           <Route path="/sobre"         element={<Sobre />} />

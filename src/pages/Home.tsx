@@ -1,6 +1,7 @@
+import type { Sponsor } from "@/data/sponsors";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Award, BookOpen, Clock, Users, MapPin, ChevronRight } from "lucide-react";
+import { Award, BookOpen, Clock, Users, MapPin, ChevronRight, Gem, Handshake, Star, Trophy } from "lucide-react";
 import { LogoFlashClip } from "@/components/LogoFlashClip";
 import Countdown from "@/components/Countdown";
 import { sponsors } from "@/data/sponsors";
@@ -35,6 +36,64 @@ const benefits = [
 
 // Use only first 3 courses as homepage preview
 const previewCourses = courses.slice(0, 3);
+
+const sponsorTierIcons = {
+  bronze: Handshake,
+  prata: Star,
+  ouro: Trophy,
+  diamante: Gem,
+} as const;
+
+const diamondSponsors = sponsors.filter((s) => s.tier === "diamante");
+const goldSponsors = sponsors.filter((s) => s.tier === "ouro");
+const silverSponsors = sponsors.filter((s) => s.tier === "prata");
+const bronzeSponsors = sponsors.filter((s) => s.tier === "bronze");
+
+const getSponsorHref = (sponsor: Sponsor) => sponsor.website || sponsor.instagram || sponsor.whatsapp;
+
+const getSponsorLabel = (tier: Sponsor["tier"]) =>
+  tier === "diamante"
+    ? "Diamante"
+    : tier === "ouro"
+    ? "Ouro"
+    : tier === "prata"
+    ? "Prata"
+    : "Bronze";
+
+const renderSponsorCard = (sponsor: Sponsor, highlightClass: string) => {
+  const Icon = sponsorTierIcons[sponsor.tier];
+  const href = getSponsorHref(sponsor);
+
+  const content = (
+    <div className={`group relative flex h-full w-full items-center justify-center overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-6 ${highlightClass}`}>
+      <div className="absolute inset-0 bg-gradient-to-br from-transparent via-white/10 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+      <div className="relative flex flex-col items-center justify-center gap-4 text-center">
+        {sponsor.logo ? (
+          <img
+            src={sponsor.logo}
+            alt={`${sponsor.name} logo`}
+            className="max-h-20 max-w-full object-contain"
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <div className="flex h-20 w-20 items-center justify-center rounded-3xl border border-white/10 bg-slate-950/80">
+            <Icon size={32} className="text-cyan-400" />
+          </div>
+        )}
+
+        <div className="space-y-1">
+          <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">{getSponsorLabel(sponsor.tier)}</p>
+          <p className="text-sm font-semibold text-white">{sponsor.name}</p>
+        </div>
+      </div>
+    </div>
+  );
+
+  // On the homepage we avoid rendering external links/buttons for sponsors.
+  // The Patrocinadores page handles clickable actions according to tier.
+  return <div key={sponsor.name} className="block">{content}</div>;
+};
 
 const Home = () => (
   <div className="min-h-screen relative">
@@ -140,29 +199,75 @@ const Home = () => (
       <div className="container mx-auto relative z-10">
         <p className="label-mono text-center mb-8 opacity-60">// parceiros estratégicos</p>
         <h2 className="text-center mb-12 text-gradient">Nossos Parceiros</h2>
-        <div className="flex flex-wrap justify-center gap-8 max-w-3xl mx-auto">
-          {sponsors.map((sponsor, i) => (
-            <a
-              key={i}
-              href={sponsor.website || "#"}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="
-                w-32 h-32 md:w-40 md:h-40 rounded-2xl
-                glass hover:border-primary/50 hover:glow-neon
-                flex items-center justify-center p-6
-                transition-all duration-300 hover:scale-105
-              "
-            >
-              <img
-                src={sponsor.logo}
-                alt={`${sponsor.name} logo`}
-                className="max-w-full max-h-full object-contain"
-                loading="lazy"
-                decoding="async"
-              />
-            </a>
-          ))}
+        <div className="space-y-12">
+          {diamondSponsors.length > 0 && (
+            <div className="mb-10 overflow-hidden rounded-[2rem] border border-cyan-500/20 bg-slate-950/80 p-5">
+              <p className="label-mono mb-4 text-center text-cyan-300">// destaque diamante</p>
+              <div className="relative overflow-hidden rounded-3xl border border-cyan-500/15 bg-slate-950/90 py-5">
+                <div className="flex animate-diamond-marquee gap-8 whitespace-nowrap px-4">
+                  {diamondSponsors.concat(diamondSponsors).map((sponsor) => {
+                    const Icon = sponsorTierIcons[sponsor.tier];
+                    const href = getSponsorHref(sponsor);
+                    const content = (
+                      <div className="flex h-28 min-w-[220px] items-center justify-center gap-3 rounded-3xl border border-cyan-400/20 bg-slate-950/90 px-4 text-white shadow-[0_0_50px_rgba(56,189,248,0.12)]">
+                        {sponsor.logo ? (
+                          <img src={sponsor.logo} alt={`${sponsor.name} logo`} className="h-16 w-auto object-contain" loading="lazy" decoding="async" />
+                        ) : (
+                          <div className="flex h-16 w-16 items-center justify-center rounded-3xl border border-cyan-400/20 bg-cyan-500/10">
+                            <Icon size={24} className="text-cyan-300" />
+                          </div>
+                        )}
+                        <div className="text-left">
+                          <p className="text-xs uppercase tracking-[0.35em] text-cyan-300">Diamante</p>
+                          <p className="text-sm font-semibold">{sponsor.name}</p>
+                        </div>
+                      </div>
+                    );
+
+                    return href ? (
+                      <a key={sponsor.name} href={href} target="_blank" rel="noopener noreferrer">
+                        {content}
+                      </a>
+                    ) : (
+                      <div key={sponsor.name}>{content}</div>
+                    );
+                  })}
+                </div>
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-slate-950 to-transparent" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-slate-950 to-transparent" />
+              </div>
+              <style>{`@keyframes diamond-marquee {0% {transform: translateX(0);}100% {transform: translateX(-50%);}} .animate-diamond-marquee {animation: diamond-marquee 24s linear infinite;}`}</style>
+            </div>
+          )}
+
+          {diamondSponsors.length > 0 && (
+            <div>
+              <p className="label-mono mb-4 text-center text-cyan-300">Patrocinadores Diamante</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {diamondSponsors.map((sponsor) => renderSponsorCard(sponsor, "border-cyan-400/30 bg-cyan-500/10"))}
+              </div>
+            </div>
+          )}
+
+          {goldSponsors.length > 0 && (
+            <div>
+              <p className="label-mono mb-4 text-center text-amber-300">Patrocinadores Ouro</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {goldSponsors.map((sponsor) => renderSponsorCard(sponsor, "border-amber-400/25 bg-amber-500/10"))}
+              </div>
+            </div>
+          )}
+
+          {silverSponsors.length > 0 && (
+            <div>
+              <p className="label-mono mb-4 text-center text-slate-300">Patrocinadores Prata</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {silverSponsors.map((sponsor) => renderSponsorCard(sponsor, "border-slate-400/25 bg-slate-400/10"))}
+              </div>
+            </div>
+          )}
+
+          {/* Bronze sponsors intentionally omitted from the Home page. They are shown only on the Patrocinadores page. */}
         </div>
       </div>
     </section>
