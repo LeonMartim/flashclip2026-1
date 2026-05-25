@@ -110,8 +110,8 @@ const Inscricao: React.FC = () => {
           <section className="card-cyber p-8 md:p-10">
             <h1 className="text-3xl md:text-4xl font-bold mb-4">FlashClip 2026 — Inscrições</h1>
             <p className="text-muted-foreground mb-4">
-              Participe dos minicursos gratuitos na Copa da Tecnologia — sessões práticas e hands-on com
-              instrutores experientes. Vagas limitadas por curso.
+              Participe dos minicursos gratuitos na Copa da Tecnologia. Uma experiência prática para aprender novas linguagens, 
+              compartilhar conhecimento e se conectar com a comunidade de tecnologia. Vagas limitadas por curso.
             </p>
             <ul className="text-sm text-muted-foreground space-y-2">
               <li>• Data do evento: <strong>13/06/2026</strong></li>
