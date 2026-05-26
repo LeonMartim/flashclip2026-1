@@ -12,7 +12,7 @@ export const instructorsByLanguage: Record<string, Instructor[]> = {
     { name: "Crispim",            photo: "/instructors/go/crispim.webp" },
     { name: "Felipe",             photo: "/instructors/go/felipe.webp" },
     { name: "Jorge Leon",         photo: "/instructors/go/jorgeleon.webp" },
-    { name: "Matheus",            photo: "/instructors/go/matheus.webp" },
+    { name: "Matheus Campos",            photo: "/instructors/go/matheus.webp" },
   ],
   "Julia": [
     { name: "Carlos Eduardo",     photo: "/instructors/julia/carloseduardo.webp" },
@@ -23,8 +23,8 @@ export const instructorsByLanguage: Record<string, Instructor[]> = {
   ],
   "C": [
     { name: "Carlos Eduardo",      photo: "/instructors/c/carloseduardo.webp" },
-    { name: "Caua",               photo: "/instructors/c/caua.webp" },
-    { name: "Gabriel Areis",       photo: "/instructors/c/gabrielareis.webp" },
+    { name: "Cauã Evaristo",               photo: "/instructors/c/caua.webp" },
+    { name: "Gabriela Areis",       photo: "/instructors/c/gabrielareis.webp" },
     { name: "João Pedro Montelo",   photo: "/instructors/c/joaopedromontelo.webp" },
     { name: "Yngrid",             photo: "/instructors/c/yngrid.webp" },
   ],
@@ -41,6 +41,7 @@ export const instructorsByLanguage: Record<string, Instructor[]> = {
     { name: "Matheus José",        photo: "/instructors/haskell/matheusjose.jpg" },
     { name: "Samuel Ramos",        photo: "/instructors/haskell/samuelramos.webp" },
     { name: "William Dias",        photo: "/instructors/haskell/williamdias.webp" },
+    { name: "Peutry",              photo: "/instructors/haskell/peutry.webp" },
   ],
   "Dart": [
     { name: "João Miguel",         photo: "/instructors/dart/joaomiguel.jpg" },
@@ -63,5 +64,14 @@ export const instructorsByLanguage: Record<string, Instructor[]> = {
   "TypeScript": [
     { name: "Murillo",            photo: "/instructors/typescript/murillo.webp" },
     { name: "Yasmin",             photo: "/instructors/typescript/yasmin.webp" },
+    { name: "Corina",             photo: "/instructors/typescript/corina.webp" },
+    { name: "Ana Clara",             photo: "/instructors/typescript/anaclara.webp" },
+  ],
+  "Swift": [
+    { name: "Heitor Mota",        photo: "/instructors/swift/heitormota.webp" },
+    { name: "Igor Evangelista",   photo: "/instructors/swift/igorevangelista.webp" },
+    { name: "Paulo vitor",        photo: "/instructors/swift/paulovitor.webp" },
+    { name: "Pedro Leony",        photo: "/instructors/swift/pedroleony.webp" },
+    { name: "Sergio",             photo: "/instructors/swift/sergio.webp" },
   ],
 };

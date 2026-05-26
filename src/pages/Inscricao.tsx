@@ -24,16 +24,16 @@ type FormData = {
 };
 
 const COURSES = [
-  "Go",
-  "Julia",
-  "C",
-  "Kotlin",
-  "Haskell",
-  "Dart",
-  "Lua",
-  "Rust",
-  "Swift",
-  "TypeScript",
+  { name: "Go", disabled: false },
+  { name: "Julia", disabled: false },
+  { name: "C", disabled: false },
+  { name: "Kotlin", disabled: false },
+  { name: "Haskell", disabled: false },
+  { name: "Dart", disabled: false },
+  { name: "Lua", disabled: false },
+  { name: "Rust", disabled: false },
+  { name: "Swift", disabled: false },
+  { name: "TypeScript", disabled: true },
 ];
 
 const Inscricao: React.FC = () => {
@@ -265,9 +265,13 @@ const Inscricao: React.FC = () => {
                         <SelectValue placeholder="Escolha um curso" />
                       </SelectTrigger>
                       <SelectContent>
-                        {COURSES.map((c) => (
-                          <SelectItem key={c} value={c}>
-                            {c}
+                        {COURSES.map((course) => (
+                          <SelectItem
+                            key={course.name}
+                            value={course.name}
+                            disabled={course.disabled}
+                          >
+                            {course.disabled ? `${course.name} — ⚠️LOTADO` : course.name}
                           </SelectItem>
                         ))}
                       </SelectContent>
