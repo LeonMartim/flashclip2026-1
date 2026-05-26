@@ -33,7 +33,7 @@ const COURSES = [
   { name: "Lua", disabled: false },
   { name: "Rust", disabled: false },
   { name: "Swift", disabled: false },
-  { name: "TypeScript", disabled: true },
+  { name: "TypeScript", disabled: false },
 ];
 
 const Inscricao: React.FC = () => {

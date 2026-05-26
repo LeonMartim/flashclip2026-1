@@ -13,8 +13,8 @@ const iconMap = {
 
 const contactUrls = {
   instagram: "https://www.instagram.com/flashclipp2026",
-  whatsapp: "https://wa.me/559999999999",
-  email: "mailto:contato@flashclip2026.com",
+  whatsapp: "https://wa.me/559484250581",
+  email: "contatoflashclip@gmail.com",
 };
 
 const ComoPatrocinar = () => {
