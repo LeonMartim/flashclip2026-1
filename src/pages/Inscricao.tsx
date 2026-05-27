@@ -30,7 +30,7 @@ const COURSES = [
   { name: "Kotlin", disabled: false },
   { name: "Haskell", disabled: false },
   { name: "Dart", disabled: false },
-  { name: "Lua", disabled: false },
+  { name: "Lua", disabled: true },
   { name: "Rust", disabled: false },
   { name: "Swift", disabled: false },
   { name: "TypeScript", disabled: false },
