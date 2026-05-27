@@ -26,7 +26,7 @@ type FormData = {
 const COURSES = [
   { name: "Go", disabled: false },
   { name: "Julia", disabled: false },
-  { name: "C", disabled: false },
+  { name: "C", disabled: true },
   { name: "Kotlin", disabled: false },
   { name: "Haskell", disabled: false },
   { name: "Dart", disabled: false },
