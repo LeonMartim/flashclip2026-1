@@ -130,7 +130,7 @@ const Inscricao: React.FC = () => {
             {successMsg ? (
               <div className="rounded-md bg-emerald-900/30 border border-emerald-700 p-4 mb-4">
                 <p className="font-medium">{successMsg}</p>
-                <p className="text-sm text-muted-foreground">Em breve você receberá um e-mail de confirmação.</p>
+                <p className="text-sm text-muted-foreground">Em breve você receberá um e-mail de confirmação. 1 á 4 dias ulteis.</p>
               </div>
             ) : null}
 
