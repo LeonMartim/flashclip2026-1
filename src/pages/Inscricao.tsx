@@ -27,7 +27,7 @@ const COURSES = [
   { name: "Go", disabled: true },
   { name: "Julia", disabled: true },
   { name: "C", disabled: true },
-  { name: "Kotlin", disabled: false },
+  { name: "Kotlin", disabled: true },
   { name: "Haskell", disabled: false },
   { name: "Dart", disabled: false },
   { name: "Lua", disabled: true },
