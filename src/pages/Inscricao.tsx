@@ -29,9 +29,9 @@ const COURSES = [
   { name: "C", disabled: true },
   { name: "Kotlin", disabled: true },
   { name: "Haskell", disabled: false },
-  { name: "Dart", disabled: false },
+  { name: "Dart", disabled: true },
   { name: "Lua", disabled: true },
-  { name: "Rust", disabled: false },
+  { name: "Rust", disabled: true },
   { name: "Swift", disabled: true },
   { name: "TypeScript", disabled: true },
 ];
