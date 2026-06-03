@@ -28,10 +28,10 @@ const COURSES = [
   { name: "Julia", disabled: true },
   { name: "C", disabled: true },
   { name: "Kotlin", disabled: true },
-  { name: "Haskell", disabled: true },
-  { name: "Dart", disabled: true },
+  { name: "Haskell", disabled: false },
+  { name: "Dart", disabled: false },
   { name: "Lua", disabled: true },
-  { name: "Rust", disabled: true },
+  { name: "Rust", disabled: false },
   { name: "Swift", disabled: true },
   { name: "TypeScript", disabled: true },
 ];

@@ -60,6 +60,7 @@ export const instructorsByLanguage: Record<string, Instructor[]> = {
     { name: "João Pedro Abrantes",  photo: "/instructors/rust/joaopedroabrantes.webp" },
     { name: "Leonardo Bezerra",    photo: "/instructors/rust/leonardobezerra.webp" },
     { name: "Werner Heerdt",       photo: "/instructors/rust/wernerheerdt.webp" },
+    { name: "Leonidas Araújo",       photo: "/instructors/rust/leonidasaraujo.webp" },
   ],
   "TypeScript": [
     { name: "Murillo",            photo: "/instructors/typescript/murillo.webp" },
