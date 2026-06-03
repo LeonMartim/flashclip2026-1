@@ -32,7 +32,7 @@ const COURSES = [
   { name: "Dart", disabled: false },
   { name: "Lua", disabled: true },
   { name: "Rust", disabled: false },
-  { name: "Swift", disabled: false },
+  { name: "Swift", disabled: true },
   { name: "TypeScript", disabled: true },
 ];
 
