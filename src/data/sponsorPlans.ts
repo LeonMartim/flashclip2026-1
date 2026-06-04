@@ -17,7 +17,7 @@ export const sponsorPlans: SponsorPlan[] = [
     id: "bronze",
     title: "Bronze",
     subtitle: "participar",
-    valueRange: "R$ 100 a R$ 199",
+    valueRange: "R$ 100 a R$ 299",
     tagline: "Apoio inicial com visibilidade na página de patrocinadores.",
     benefits: [
       "Logo no site apenas na página Patrocinadores",
@@ -37,7 +37,7 @@ export const sponsorPlans: SponsorPlan[] = [
     id: "prata",
     title: "Prata",
     subtitle: "ser visto",
-    valueRange: "R$ 200 a R$ 349",
+    valueRange: "R$ 300 a R$ 599",
     tagline: "Maior alcance com presença em Home e redes sociais.",
     benefits: [
       "Tudo do Bronze",
@@ -58,7 +58,7 @@ export const sponsorPlans: SponsorPlan[] = [
     id: "ouro",
     title: "Ouro",
     subtitle: "ser lembrado",
-    valueRange: "R$ 350 a R$ 499",
+    valueRange: "R$ 600 a R$ 899",
     tagline: "Destaque premium com presença ampliada e divulgação ativa.",
     benefits: [
       "Tudo do Prata e do Bronze",
@@ -79,7 +79,7 @@ export const sponsorPlans: SponsorPlan[] = [
     id: "diamante",
     title: "Diamante",
     subtitle: "dominar a atenção",
-    valueRange: "R$ 500 ou mais",
+    valueRange: "R$ 900 ou mais",
     tagline: "Apoio de elite com destaque máximo em todas as frentes.",
     benefits: [
       "Tudo do Ouro",
