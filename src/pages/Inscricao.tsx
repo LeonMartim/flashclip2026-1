@@ -120,6 +120,27 @@ const Inscricao: React.FC = () => {
             </ul>
           </section>
 
+        <div className="card-cyber p-8 md:p-10 text-center">
+          <h2 className="text-3xl font-bold mb-4 text-cyan-400">
+            Inscrições Encerradas
+          </h2>
+
+          <p className="text-lg mb-4">
+            Todas as vagas do FlashClip 2026 foram preenchidas.
+          </p>
+
+          <p className="text-muted-foreground">
+            Agradecemos o interesse em participar da Copa da Tecnologia.
+            Esperamos você na próxima edição do evento.
+          </p>
+
+          <div className="mt-6 p-4 rounded-lg border border-cyan-500/30 bg-cyan-500/10">
+            🚀 Nos vemos no FlashClip 2026!
+          </div>
+        </div>
+        
+          { false && (
+
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="card-cyber p-8 md:p-10"
@@ -320,6 +341,7 @@ const Inscricao: React.FC = () => {
               </p>
             </div>
           </form>
+          ) }
         </div>
       </div>
     </div>
