@@ -135,10 +135,10 @@ const Inscricao: React.FC = () => {
           </p>
 
           <div className="mt-6 p-4 rounded-lg border border-cyan-500/30 bg-cyan-500/10">
-            🚀 Nos vemos no FlashClip 2026!
+            🚀 Nos vemos no FlashClip 2026-2!
           </div>
         </div>
-        
+
           { false && (
 
           <form
