@@ -24,7 +24,7 @@ export const instructorsByLanguage: Record<string, Instructor[]> = {
   "C": [
     { name: "Carlos Eduardo",      photo: "/instructors/c/carloseduardo.webp" },
     { name: "Cauã Evaristo",               photo: "/instructors/c/caua.webp" },
-    { name: "Gabriela Areis",       photo: "/instructors/c/gabrielareis.webp" },
+    { name: "Gabriela Reis",       photo: "/instructors/c/gabrielareis.webp" },
     { name: "João Pedro Montelo",   photo: "/instructors/c/joaopedromontelo.webp" },
     { name: "Yngrid",             photo: "/instructors/c/yngrid.webp" },
   ],
