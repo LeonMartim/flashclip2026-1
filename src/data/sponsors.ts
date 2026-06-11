@@ -10,6 +10,16 @@ export interface Sponsor {
 }
 
 export const sponsors: Sponsor[] = [
+
+  {
+    name: "Yllustre Agência",
+    tier: "prata",
+    description: "A Yllustre é uma agência criativa que une comunicação, tecnologia e estratégia para transformar ideias em marcas autênticas e memoráveis. Com foco em propósito, inovação e conexão, desenvolve soluções que fortalecem a presença e o posicionamento de negócios no mercado.",
+    logo: "/patrocinadores/yilustre.webp",
+    instagram: "https://www.instagram.com/yllustre_agencia?igsh=dTZqbHowdnhtYzRm",
+    website: "https://example",
+  },
+
   {
     name: "Sublime - Comunicação Inteligente",
     tier: "bronze",
@@ -47,18 +57,11 @@ export const sponsors: Sponsor[] = [
   },
 
   {
-    name: "Seja nosso patrocinador - Prata 1",
-    tier: "prata",
-    description: "Exposição na Home em Nossos Parceiros e presença digital com link ativo.",
-    instagram: "https://www.instagram.com/sejapatrocinador1",
-    website: "https://example.com/patrocinador-prata-1",
-  },
-  {
     name: "Seja nosso patrocinador - Prata 2",
     tier: "prata",
     description: "Marca visível para estudantes e visitantes com link para sua página ou rede social.",
     instagram: "https://www.instagram.com/sejapatrocinador2",
-    website: "https://example.com/patrocinador-prata-2",
+    website: "https://example",
   },
   {
     name: "Seja nosso patrocinador - Ouro 1",
