@@ -18,6 +18,34 @@ export const sponsors: Sponsor[] = [
     logo: "/patrocinadores/SublimeLogo.webp",
     instagram: "https://www.instagram.com/sublime.to",
   },
+
+  {
+    name: "Atenttus Consultoria Contábil e Agronômica",
+    tier: "bronze",
+    description:
+      "A Atenttus Consultoria Contábil e Agronômica oferece soluções em contabilidade, planejamento tributário e consultoria para empresas e produtores rurais, unindo experiência, inovação e atendimento personalizado.",
+    logo: "/patrocinadores/atenttus.webp",
+    instagram: "https://www",
+  }, 
+
+  {
+    name: "Líder Palmas Refrigeração",
+    tier: "bronze",
+    description:
+      "A Líder Palmas Refrigeração oferece soluções em climatização e refrigeração, com serviços de instalação, manutenção e suporte técnico.",
+    logo: "/patrocinadores/lider.jpeg",
+    instagram: "https://www",
+  },
+
+  {
+    name: "FamPro Seguros",
+    tier: "bronze",
+    description:
+      "A FamPro Seguros oferece soluções em seguros e proteção financeira para pessoas e empresas, com atendimento especializado e foco na segurança de seus clientes.",
+    logo: "/patrocinadores/fampro.jpeg",
+    instagram: "https://www.instagram.com/sublime.to",
+  },
+
   {
     name: "Seja nosso patrocinador - Prata 1",
     tier: "prata",
