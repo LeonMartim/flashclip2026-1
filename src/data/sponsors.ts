@@ -32,7 +32,7 @@ export const sponsors: Sponsor[] = [
     name: "Líder Palmas Refrigeração",
     tier: "bronze",
     description:
-      "A Líder Palmas Refrigeração oferece soluções em climatização e refrigeração, com serviços de instalação, manutenção e suporte técnico.",
+      "A Líder Palmas Refrigeração reúne mais de 40 anos de experiência no segmento de refrigeração e eletrodomésticos, oferecendo peças, suporte especializado e soluções de confiança para técnicos e consumidores.",
     logo: "/patrocinadores/lider.webp",
     instagram: "https://www",
   },
