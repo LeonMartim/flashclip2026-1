@@ -93,9 +93,9 @@ Patrocinador configurado em `src/data/sponsors.ts`.
 
 A identidade visual de FlashClip 2026 é definida por:
 
-- fundo escuro com detalhes de glow neon
-- paleta principal `Tech Sport Blue` e `World Cup Gold`
-- efeitos de vidro e partículas estelares
+- fundo escuro com imagem de um estádio, afim deixar o site menos pesado 
+- paleta principal `Blue` e `World Cup Gold`
+- Sem efeitos
 - grid sutil no background
 - tipografia moderna com foco em leitura e contraste
 
