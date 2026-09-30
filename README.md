@@ -82,11 +82,10 @@ O formulário de inscrição está implementado em `src/pages/Inscricao.tsx` e a
 
 ---
 
-## 🤝 Patrocinador atual
+## 🤝 Patrocinador atuais
 
-- **Sublime - Comunicação Inteligente**
 
-Patrocinador bronze configurado em `src/data/sponsors.ts`.
+Patrocinador configurado em `src/data/sponsors.ts`.
 
 ---
 
